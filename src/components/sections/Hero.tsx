@@ -3,13 +3,13 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-white dark:bg-slate-950 transition-colors">
+    <section className="relative overflow-hidden py-16 md:py-16 bg-white dark:bg-slate-950 transition-colors">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-accent dark:bg-slate-900 text-brand-deep dark:text-brand-bright text-sm font-bold mb-10 tracking-wide uppercase shadow-sm">
             New: Enterprise Solutions 2.0
           </div>
-          <h1 className="text-5xl md:text-8xl font-black text-brand-deep dark:text-white leading-[1.05] mb-10">
+          <h1 className="text-5xl md:text-8xl font-semibold text-brand-deep dark:text-white leading-[1.05] mb-10">
             Let's Learn <br /> 
             <span className="text-brand-bright">Earn & Succeed</span>
           </h1>

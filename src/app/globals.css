@@ -6,43 +6,26 @@
   --color-brand-accent: #E3F2FD;
   
   --font-inter: var(--font-inter);
-  --font-geist-sans: var(--font-geist-sans);
 }
+
+/* Configure class-based dark mode for Tailwind 4 */
+@variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card-bg: oklch(1 0 0);
-  --header-bg: oklch(1 0 0 / 0.9);
+  --background: #ffffff;
+  --foreground: #020617;
 }
 
-/* Force dark mode variables when .dark class is present */
 .dark {
-  --background: oklch(0.129 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card-bg: oklch(0.18 0.02 260);
-  --header-bg: oklch(0.129 0 0 / 0.9);
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-* {
-  border-color: var(--color-slate-200);
-}
-
-.dark * {
-  border-color: var(--color-slate-800);
-}
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  transition-property: background-color, color;
+  transition-duration: 300ms;
 }
 
 .container-custom {
