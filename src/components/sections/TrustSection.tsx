@@ -2,6 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Globe, Cpu, Zap, Award, ShieldCheck, Rocket } from "lucide-react";
+
+const PARTNERS = [
+  { icon: Globe, name: "GlobalTech" },
+  { icon: Cpu, name: "DataCore" },
+  { icon: Zap, name: "FlashScale" },
+  { icon: Award, name: "EliteCert" },
+  { icon: ShieldCheck, name: "SafeGuard" },
+  { icon: Rocket, name: "SkyHigh" },
+];
 
 export function TrustSection() {
   return (
@@ -13,19 +23,22 @@ export function TrustSection() {
           transition={{ duration: 1 }}
           className="text-center text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-12"
         >
-          Trusted by professionals from
+          Trusted by professionals from world-class organizations
         </motion.p>
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale dark:invert dark:opacity-20"
+          className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 dark:opacity-30 transition-opacity"
         >
-          {/* Logos placeholder */}
-          <div className="h-6 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
-          <div className="h-6 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
-          <div className="h-6 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
-          <div className="h-6 w-32 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+          {PARTNERS.map((partner, idx) => (
+            <div key={idx} className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all cursor-default group">
+              <partner.icon className="w-8 h-8 text-slate-600 dark:text-white group-hover:text-brand-bright transition-colors" strokeWidth={1.5} />
+              <span className="text-xl font-bold tracking-tight text-slate-700 dark:text-white group-hover:text-brand-bright transition-colors">
+                {partner.name}
+              </span>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

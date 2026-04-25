@@ -7,16 +7,22 @@ interface ProgramCardProps {
   category: string;
   duration: string;
   fee: string;
+  image: string;
   isTopRated?: boolean;
 }
 
-export function ProgramCard({ title, category, duration, fee, isTopRated }: ProgramCardProps) {
+export function ProgramCard({ title, category, duration, fee, image, isTopRated }: ProgramCardProps) {
   return (
     <div className="group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all duration-500">
-      <div className="h-64 bg-slate-50 dark:bg-slate-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-brand-deep/20 to-brand-bright/20 group-hover:scale-110 transition-transform duration-700"></div>
+      <div className="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent to-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         {isTopRated && (
-          <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-lg text-xs font-bold text-brand-deep dark:text-brand-bright shadow-sm">
+          <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 dark:bg-brand-deep/90 backdrop-blur-sm rounded-lg text-xs font-bold text-brand-deep dark:text-brand-bright shadow-lg border border-slate-100 dark:border-brand-bright/20">
             TOP RATED
           </div>
         )}
@@ -31,7 +37,7 @@ export function ProgramCard({ title, category, duration, fee, isTopRated }: Prog
         <div className="flex items-center justify-between pt-6 border-t border-slate-50 dark:border-slate-800">
           <div>
             <p className="text-xs text-slate-400 dark:text-slate-500 uppercase font-bold mb-1">Fee</p>
-            <span className="text-3xl font-black text-brand-deep dark:text-slate-100 transition-colors">{fee}</span>
+            <span className="text-3xl font-black text-brand-deep dark:text-slate-100 transition-colors tracking-tight">{fee}</span>
           </div>
           <button className="w-14 h-14 rounded-2xl bg-brand-accent dark:bg-slate-800 text-brand-deep dark:text-brand-bright hover:bg-brand-bright hover:text-white transition-all flex items-center justify-center group/btn shadow-sm">
             <ArrowRight className="h-6 w-6 group-hover/btn:translate-x-1 transition-transform" />

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ProgramCard } from "./ProgramCard";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const PROGRAMS = [
   {
@@ -11,6 +11,7 @@ const PROGRAMS = [
     category: "Data Science",
     duration: "6 Months",
     fee: "₹ 59,000",
+    image: "https://images.unsplash.com/photo-1518186239717-2990da799fc1?q=80&w=800&auto=format&fit=crop",
     isTopRated: true,
   },
   {
@@ -18,6 +19,7 @@ const PROGRAMS = [
     category: "Management",
     duration: "4 Months",
     fee: "₹ 45,000",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
     isTopRated: true,
   },
   {
@@ -25,11 +27,12 @@ const PROGRAMS = [
     category: "Analytics",
     duration: "5 Months",
     fee: "₹ 39,000",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
     isTopRated: false,
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -39,7 +42,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
