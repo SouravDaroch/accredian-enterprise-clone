@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,7 +18,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-20 flex items-center transition-all duration-300 ${
-        isScrolled ? "bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isScrolled ? "bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm border-b border-slate-100 dark:border-slate-800" : "bg-transparent"
       }`}
     >
       <div className="container-custom flex items-center justify-between w-full">
@@ -43,12 +44,15 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="px-6 py-2.5 text-sm font-bold text-brand-deep dark:text-white hover:opacity-70 transition-opacity">
-            Login
-          </button>
-          <button className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all">
-            Try for free
-          </button>
+          <ThemeToggle />
+          <div className="hidden sm:flex items-center gap-4">
+            <button className="px-6 py-2.5 text-sm font-bold text-brand-deep dark:text-white hover:opacity-70 transition-opacity">
+              Login
+            </button>
+            <button className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all">
+              Try for free
+            </button>
+          </div>
         </div>
       </div>
     </header>
