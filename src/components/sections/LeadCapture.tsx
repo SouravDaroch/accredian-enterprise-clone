@@ -7,6 +7,7 @@ import { leadSchema, LeadFormData } from "@/lib/schemas";
 import { submitLead } from "@/app/actions";
 import { toast } from "sonner";
 import { Loader2, Mail, User, Building2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function LeadCapture() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +42,12 @@ export function LeadCapture() {
     <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden scroll-mt-20">
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-5xl md:text-7xl font-semibold text-brand-deep dark:text-white leading-[1.1] mb-8">
               Transform Your <br />
               <span className="text-brand-bright">Enterprise Future</span>
@@ -49,9 +55,15 @@ export function LeadCapture() {
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
               Join 500+ enterprises that have accelerated their growth with Accredian's custom learning paths and world-class mentorship.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-2xl"
+          >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-1">
@@ -105,7 +117,9 @@ export function LeadCapture() {
                 )}
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full py-5 bg-brand-bright text-white rounded-2xl font-bold text-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none transition-all flex items-center justify-center gap-2"
@@ -118,14 +132,21 @@ export function LeadCapture() {
                 ) : (
                   "Request Enterprise Demo"
                 )}
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-accent/30 dark:bg-brand-bright/5 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.3, 0.2] 
+        }}
+        transition={{ duration: 12, repeat: Infinity }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-accent/30 dark:bg-brand-bright/5 rounded-full blur-[120px] -z-10"
+      ></motion.div>
     </section>
   );
 }

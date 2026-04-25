@@ -4,7 +4,7 @@
   --color-brand-deep: #1A237E;
   --color-brand-bright: #2196F3;
   --color-brand-accent: #E3F2FD;
-  
+
   --font-inter: var(--font-inter);
 }
 
@@ -23,7 +23,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth !important;
+    scroll-behavior: auto !important;
   }
 }
 

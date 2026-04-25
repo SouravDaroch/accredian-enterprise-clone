@@ -3,70 +3,137 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { motion, useScroll, useTransform, animate } from "framer-motion";
+
+const NAV_LINKS = [
+  { name: "Programs", href: "#programs", id: "programs" },
+  { name: "About Us", href: "#about", id: "about" },
+  { name: "Refer & Earn", href: "#contact", id: "contact" },
+];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [isScrolling, setIsScrolling] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Smoothly transform values based on scroll
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 50],
+    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]
+  );
+
+  const borderOpacity = useTransform(scrollY, [0, 50], [0, 1]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (isScrolling) return;
+
+      // Simple active section detection
+      const sections = ["home", "programs", "about", "contact"];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= -100 && rect.top <= 300) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isScrolling]);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      setIsScrolling(true);
+      setActiveSection(id);
+      
+      const targetPosition = element.offsetTop - 80;
+      const startPosition = window.scrollY;
+      
+      // Use Framer Motion's animate function for an ultra-smooth, eased scroll
+      animate(startPosition, targetPosition, {
+        type: "spring",
+        stiffness: 45, // Lower stiffness for a more "luxurious" feel
+        damping: 15,
+        mass: 1,
+        onUpdate: (latest) => window.scrollTo(0, latest),
+        onComplete: () => {
+          setTimeout(() => setIsScrolling(false), 100);
+        }
+      });
     }
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 h-20 flex items-center transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-b border-slate-100 dark:border-slate-800" 
-          : "bg-transparent"
-      }`}
+    <motion.header
+      style={{
+        borderBottomWidth: useTransform(scrollY, [0, 50], [0, 1]),
+      }}
+      className="fixed top-0 left-0 right-0 z-50 h-20 flex items-center transition-shadow duration-300 bg-white/0 dark:bg-slate-950/0 backdrop-blur-md shadow-sm border-slate-100 dark:border-slate-800"
     >
+      {/* Real-time background overlay for dark/light support with Framer Motion style */}
+      <motion.div
+        style={{ 
+          opacity: borderOpacity,
+          backgroundColor: useTransform(
+            scrollY,
+            [0, 50],
+            ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]
+          )
+        }}
+        className="absolute inset-0 dark:hidden -z-10"
+      />
+      <motion.div
+        style={{ 
+          opacity: borderOpacity,
+          backgroundColor: useTransform(
+            scrollY,
+            [0, 50],
+            ["rgba(15, 23, 42, 0)", "rgba(2, 6, 23, 0.8)"]
+          )
+        }}
+        className="absolute inset-0 hidden dark:block -z-10"
+      />
+
       <div className="container-custom flex items-center justify-between w-full">
-        <Link 
-          href="#home" 
-          onClick={(e) => scrollToSection(e, "home")}
-          className="flex items-center gap-2 group"
+        <button
+          onClick={() => scrollToSection("home")}
+          className="flex items-center gap-2 group outline-none"
         >
-          <div className="w-10 h-10 bg-brand-bright rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 bg-brand-bright rounded-xl flex items-center justify-center shadow-lg transition-transform"
+          >
             <span className="text-white font-bold text-xl">A</span>
-          </div>
+          </motion.div>
           <span className="text-2xl font-bold tracking-tight text-brand-deep dark:text-white transition-colors">
             Accredian
           </span>
-        </Link>
+        </button>
 
-        <nav className="hidden lg:flex items-center gap-10">
-          <Link 
-            href="#programs" 
-            onClick={(e) => scrollToSection(e, "programs")}
-            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
-          >
-            Programs
-          </Link>
-          <Link 
-            href="#about" 
-            onClick={(e) => scrollToSection(e, "about")}
-            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
-          >
-            About Us
-          </Link>
-          <Link 
-            href="#contact" 
-            onClick={(e) => scrollToSection(e, "contact")}
-            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
-          >
-            Refer & Earn
-          </Link>
+        <nav className="hidden lg:flex items-center gap-2 relative">
+          {NAV_LINKS.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollToSection(link.id)}
+              className="relative px-4 py-2 text-sm font-semibold transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100 hover:text-brand-bright outline-none"
+            >
+              <span className="relative z-10">{link.name}</span>
+              {activeSection === link.id && (
+                <motion.div
+                  layoutId="activeNav"
+                  className="absolute bottom-0 left-4 right-4 h-0.5 bg-brand-bright rounded-full"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -75,16 +142,17 @@ export default function Header() {
             <button className="px-6 py-2.5 text-sm font-bold text-slate-900 dark:text-white hover:opacity-70 transition-opacity">
               Login
             </button>
-            <Link 
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "contact")}
-              className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all text-center"
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("contact")}
+              className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full shadow-lg hover:shadow-brand-bright/20 transition-all text-center outline-none"
             >
               Try for free
-            </Link>
+            </motion.button>
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

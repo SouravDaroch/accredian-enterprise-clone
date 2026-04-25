@@ -35,6 +35,7 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} font-inter antialiased flex flex-col min-h-screen transition-colors duration-300`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
