@@ -26,7 +26,7 @@ A high-performance landing page clone built with **Next.js 16 (Turbopack)** and 
 - Refactored auto-generated components into **highly reusable TypeScript interfaces** (e.g., `ProgramCardProps`).
 
 ## 🚀 How to Run
-1. Clone the Repo: `git clone`
+1. Clone the Repo: `git clone git@github.com:SouravDaroch/accredian-enterprise-clone.git`
 2. Install dependencies: `npm install`
 3. Run the development server: `npm run dev`
 3. View at `localhost:3000`
