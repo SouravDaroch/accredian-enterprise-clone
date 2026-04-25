@@ -39,7 +39,11 @@ export function LeadCapture() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden scroll-mt-20">
+    <section 
+      id="contact" 
+      aria-labelledby="contact-heading"
+      className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden scroll-mt-20"
+    >
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -48,7 +52,7 @@ export function LeadCapture() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-brand-deep dark:text-white leading-[1.1] mb-8">
+            <h2 id="contact-heading" className="text-5xl md:text-7xl font-semibold text-brand-deep dark:text-white leading-[1.1] mb-8">
               Transform Your <br />
               <span className="text-brand-bright">Enterprise Future</span>
             </h2>

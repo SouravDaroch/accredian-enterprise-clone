@@ -53,7 +53,11 @@ const itemVariants: Variants = {
 
 export function FeaturedPrograms() {
   return (
-    <section id="programs" className="py-32 bg-white dark:bg-slate-950 transition-colors scroll-mt-20">
+    <section 
+      id="programs" 
+      aria-labelledby="programs-heading"
+      className="py-32 bg-white dark:bg-slate-950 transition-colors scroll-mt-20"
+    >
       <div className="container-custom">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -63,7 +67,7 @@ export function FeaturedPrograms() {
           className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-deep dark:text-white mb-4">
+            <h2 id="programs-heading" className="text-4xl md:text-5xl font-extrabold text-brand-deep dark:text-white mb-4">
               Popular Programs
             </h2>
             <p className="text-xl text-slate-500 dark:text-slate-400">Choose from our wide range of world-class programs</p>

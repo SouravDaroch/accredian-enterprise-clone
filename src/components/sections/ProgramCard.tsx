@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 interface ProgramCardProps {
@@ -15,10 +16,12 @@ export function ProgramCard({ title, category, duration, fee, image, isTopRated 
   return (
     <div className="group bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] transition-all duration-500">
       <div className="h-64 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
-        <img 
+        <Image 
           src={image} 
           alt={title} 
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          fill
+          className="object-cover group-hover:scale-110 transition-transform duration-700"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-b from-transparent to-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         {isTopRated && (

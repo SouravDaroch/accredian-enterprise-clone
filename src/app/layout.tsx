@@ -22,9 +22,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Accredian Enterprise - Upskill Your Workforce",
-  description: "Accelerate your career with premium certifications and enterprise training.",
+  title: {
+    template: "%s | Accredian Enterprise",
+    default: "Accredian Enterprise | Upskill Your Workforce",
+  },
+  description: "Accredian Enterprise offers world-class certifications in AI, Product Management, and Data Science. Partner with us to transform your team.",
+  openGraph: {
+    title: "Accredian Enterprise | Upskill Your Workforce",
+    description: "Accredian Enterprise offers world-class certifications in AI, Product Management, and Data Science. Partner with us to transform your team.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Accredian Enterprise",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
+
 
 export default function RootLayout({
   children,

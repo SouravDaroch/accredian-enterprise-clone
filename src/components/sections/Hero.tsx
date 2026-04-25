@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden py-16 md:py-16 bg-white dark:bg-slate-950 transition-colors scroll-mt-20">
+    <section 
+      id="home" 
+      aria-labelledby="hero-heading"
+      className="relative overflow-hidden py-16 md:py-16 bg-white dark:bg-slate-950 transition-colors scroll-mt-20"
+    >
       <div className="container-custom relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +26,7 @@ export function Hero() {
           >
             New: Enterprise Solutions 2.0
           </motion.div>
-          <h1 className="text-5xl md:text-8xl font-semibold text-brand-deep dark:text-white leading-[1.05] mb-10">
+          <h1 id="hero-heading" className="text-5xl md:text-8xl font-semibold text-brand-deep dark:text-white leading-[1.05] mb-10">
             Let's Learn <br /> 
             <motion.span 
               initial={{ textShadow: "0 0 0px rgba(33, 150, 243, 0)" }}
