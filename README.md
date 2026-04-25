@@ -16,8 +16,8 @@ A high-performance landing page clone built with **Next.js 16 (Turbopack)** and 
 - **Responsive Design**: Mobile-first architecture optimized for all screen sizes.
 
 ## 🤖 AI Usage Disclosure
-- **Where AI helped**: Used Antigravity/Gemini to scaffold modular section architectures, generate Zod schemas for form validation, and create the initial multi-column footer structure.
-- **Manual Improvements**: 
+**Where AI helped**: Used Antigravity/Gemini to scaffold modular section architectures, generate Zod schemas for form validation, and create the initial multi-column footer structure.
+ **Manual Improvements**: 
 - improved the UI and UX of the website, also ensured the compatibility of dark/light mode throughout all the components
 - tested and debugged the changes made and ensured the website is responsive on different screen sizes
 - Manually refined the **Tailwind 4 CSS variable system** for the dual-theme logic.
