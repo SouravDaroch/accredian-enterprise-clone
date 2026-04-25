@@ -11,7 +11,7 @@ const PROGRAMS = [
     category: "Data Science",
     duration: "6 Months",
     fee: "₹ 59,000",
-    image: "https://images.unsplash.com/photo-1518186239717-2990da799fc1?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     isTopRated: true,
   },
   {
