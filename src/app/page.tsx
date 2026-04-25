@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { FeaturedPrograms } from "@/components/sections/FeaturedPrograms";
+import { LeadCapture } from "@/components/sections/LeadCapture";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <TrustSection />
       <FeaturedPrograms />
+      <LeadCapture />
     </div>
   );
 }
