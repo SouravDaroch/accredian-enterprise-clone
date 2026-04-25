@@ -2,7 +2,7 @@ import React from "react";
 
 export function TrustSection() {
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-100 dark:border-slate-800 transition-colors">
+    <section id="about" className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-100 dark:border-slate-800 transition-colors scroll-mt-20">
       <div className="container-custom">
         <p className="text-center text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-12">
           Trusted by professionals from

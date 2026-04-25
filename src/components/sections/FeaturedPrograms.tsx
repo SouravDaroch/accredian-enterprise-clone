@@ -28,7 +28,7 @@ const PROGRAMS = [
 
 export function FeaturedPrograms() {
   return (
-    <section className="py-32 bg-white dark:bg-slate-950 transition-colors">
+    <section id="programs" className="py-32 bg-white dark:bg-slate-950 transition-colors scroll-mt-20">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
           <div>

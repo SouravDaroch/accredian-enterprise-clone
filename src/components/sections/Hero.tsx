@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-16 md:py-16 bg-white dark:bg-slate-950 transition-colors">
+    <section id="home" className="relative overflow-hidden py-16 md:py-16 bg-white dark:bg-slate-950 transition-colors scroll-mt-20">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-accent dark:bg-slate-900 text-brand-deep dark:text-brand-bright text-sm font-bold mb-10 tracking-wide uppercase shadow-sm">

@@ -15,6 +15,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-20 flex items-center transition-all duration-300 ${
@@ -24,7 +32,11 @@ export default function Header() {
       }`}
     >
       <div className="container-custom flex items-center justify-between w-full">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link 
+          href="#home" 
+          onClick={(e) => scrollToSection(e, "home")}
+          className="flex items-center gap-2 group"
+        >
           <div className="w-10 h-10 bg-brand-bright rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
             <span className="text-white font-bold text-xl">A</span>
           </div>
@@ -34,14 +46,26 @@ export default function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-10">
-          <Link href="#" className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100">
-            Refer & Earn
+          <Link 
+            href="#programs" 
+            onClick={(e) => scrollToSection(e, "programs")}
+            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
+          >
+            Programs
           </Link>
-          <Link href="#" className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100">
-            Resources
-          </Link>
-          <Link href="#" className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100">
+          <Link 
+            href="#about" 
+            onClick={(e) => scrollToSection(e, "about")}
+            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
+          >
             About Us
+          </Link>
+          <Link 
+            href="#contact" 
+            onClick={(e) => scrollToSection(e, "contact")}
+            className="text-sm font-semibold hover:text-brand-bright transition-colors uppercase tracking-wide text-slate-900 dark:text-slate-100"
+          >
+            Refer & Earn
           </Link>
         </nav>
 
@@ -51,9 +75,13 @@ export default function Header() {
             <button className="px-6 py-2.5 text-sm font-bold text-slate-900 dark:text-white hover:opacity-70 transition-opacity">
               Login
             </button>
-            <button className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all">
+            <Link 
+              href="#contact"
+              onClick={(e) => scrollToSection(e, "contact")}
+              className="px-8 py-2.5 text-sm font-bold bg-brand-bright text-white rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all text-center"
+            >
               Try for free
-            </button>
+            </Link>
           </div>
         </div>
       </div>

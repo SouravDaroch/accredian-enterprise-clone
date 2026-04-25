@@ -38,7 +38,7 @@ export function LeadCapture() {
   };
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden">
+    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors relative overflow-hidden scroll-mt-20">
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
